@@ -1,0 +1,21 @@
+@import "../../../../styles.scss";
+
+.separator {
+    padding: 0 8px;
+}
+
+.header {
+    margin: auto;
+    height: 7vh;
+}
+
+.header-2 {
+    background-color: #FFFFFF;
+    height: 9vh;
+}
+
+:host ::ng-deep {
+    .p-breadcrumb {
+        background-color: $background-color-default;
+    }
+}

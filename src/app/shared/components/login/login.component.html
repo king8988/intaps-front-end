@@ -1,0 +1,62 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="flex flex-row sm:flex-row sm:items-center">
+        <!-- <div class="flex w-full sm:w-auto"> -->
+        <div class="flex flex-col h-screen w-1/2 p-8 sm:w-1/2 place-content-center items-center login-form-container">
+            <div class="w-2/3 justify-items-center">
+                <div class="flex-auto sm:items-center mb-10 justify-items-center">
+                    <h1 class="block text-5xl font-bold mb-6">Welcome Back</h1>
+                    <p class="text-lg text-gray-800">Enter your Username and Password to access your account.</p>
+                </div>
+                <div class="w-4/5">
+                    <div class="flex flex-col sm:flex-row sm:items-left gap-6 mb-7">
+                        <div class="flex-auto">
+                            <label for="username" class="block font-semibold mb-2">Username</label>
+                            <input 
+                                type="text" 
+                                pInputText 
+                                formControlName="username"
+                                inputId="username"
+                                class="p-4 h-10 w-full border-2 border-gray-300" />
+                            @if (loginForm.get('username')?.invalid &&
+                            (loginForm.get('username')?.dirty)) { @if
+                            (loginForm.get('username')?.hasError('required')) {
+                            <p-message severity="error" variant="simple" size="small">Userame is required</p-message>
+                            } }
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-left gap-6 mb-6">
+                        <div class="flex-1">
+                            <label for="password" class="block font-semibold mb-2">Password</label>
+                            <input 
+                                type="password" 
+                                inputId="password"
+                                formControlName="password"
+                                class="p-4 h-10 w-full border-2 border-gray-300" />
+                            @if (loginForm.get('password')?.invalid &&
+                            (loginForm.get('password')?.dirty)) { @if
+                            (loginForm.get('password')?.hasError('required')) {
+                            <p-message severity="error" variant="simple" size="small">Password is required</p-message>
+                            } }
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-6 mb-6">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <p-checkbox [binary]="true" />
+                            <p>Remember Me</p>
+                        </div>
+                        <div class="flex-auto items-end justify-items-end">
+                            <p><a href=''>Forgot Your Password?</a></p>
+                        </div>
+                    </div>
+                    <div class="block max-w-full w-full sm:w-full bg-sky-600 text-red-50">
+                        <p-button [loading]="isSubmitted" type="submit" styleClass="w-full sm:w-full h-10" label="Login" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+        <div class="flex h-screen w-1/2 sm:w-1/2">
+            <img class="w-full sm:w-full" src="/QCLoginImage.png">
+        </div>
+    </div>
+</form>

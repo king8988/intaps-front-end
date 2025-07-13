@@ -1,0 +1,54 @@
+<div class="flex flex-row gap-x-5">
+  <div class="side-menu flex flex-col w-1/7">
+    <div class="flex flex-col h-full">
+      <div class="flex items-center justify-between px-6 pt-4 shrink-0">
+        <span class="inline-flex items-center mb-6 gap-2">
+          <p-image src="/Goodnotes-Logo.jpg"></p-image>
+        </span>
+      </div>
+      <div class="overflow-y-auto h-screen/2">
+        <ul class="list-none p-1 m-0">
+          <li>
+            <a
+              pRipple
+              href=""
+              class="flex items-center cursor-pointer px-4 py-2 rounded-border text-gray-700 dark:text-gray-100 hover:bg-sky-500/10 dark:hover:bg-stale-800 duration-150 transition-colors p-ripple"
+            >
+              <i class="pi pi-home mr-2 menu-text"></i>
+              <span class="font-medium menu-text">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <div
+              pRipple
+              pStyleClass="@next"
+              enterFromClass="hidden"
+              enterActiveClass="animate-slidedown"
+              leaveToClass="hidden"
+              leaveActiveClass="animate-slideup"
+              class="px-4 py-2 flex items-center justify-between text-surface-600 dark:text-surface-200 cursor-pointer p-ripple"
+            >
+              <span class="font-medium menu-text">Notes</span>
+              <i class="pi pi-chevron-down ml-auto menu-text"></i>
+            </div>
+            <ul class="list-none p-0 m-0 overflow-hidden">
+              <li>
+                <a
+                  pRipple
+                  [routerLink]="users"
+                  class="flex items-center cursor-pointer px-4 py-2 rounded-border text-surface-700 dark:text-surface-100 hover:bg-sky-500/10 dark:hover:bg-stale-800 duration-150 transition-colors p-ripple"
+                >
+                  <i class="pi pi-users mr-2 menu-text"></i>
+                  <span class="font-medium menu-text">User Notes</span>
+                </a>
+              </li>
+               </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-container flex flex-col px-6 py-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>

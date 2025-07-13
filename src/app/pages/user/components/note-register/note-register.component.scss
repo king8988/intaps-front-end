@@ -1,0 +1,20 @@
+// :host ::ng-deep {
+//     .ng-untouched, .ng-pristine {
+//         background-color: red;
+//         color: blue;
+//     }
+// }
+
+// .ng-untouched,
+// .ng-pristine {
+//     background-color: yellow;
+//     color: blue;
+// }
+:host ::ng-deep {
+    .p-password-input {
+        width: 100%;
+    }
+    .p-inputmask {
+        width: 100%;
+    }
+}

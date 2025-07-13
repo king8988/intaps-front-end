@@ -1,0 +1,96 @@
+<app-header [breadCrumbList]="breadCrumbList" [title]="pageTitle" [description]="pageDescription"></app-header>
+
+<p-table 
+    #dt1 
+    stripedRows
+    [value]="notes" 
+    [loading]="loading"
+    dataKey="id" 
+    [rows]="10" 
+    [rowsPerPageOptions]="[10, 25, 50]" 
+    [loading]="loading"
+    [paginator]="true" 
+    [globalFilterFields]="['fullName', 'userName', 'email', 'phoneNumber']">
+    <ng-template #caption>
+        <div class="flex justify-between">
+            <p class="text-2xl my-auto font-bold">List of User Notes</p>
+            <div class="flex">
+                <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (click)="clear(dt1)" />
+                <p-button label="Add New" icon="pi pi-plus" (click)="addUser()" iconPos="right" class="pl-4" />
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #header>
+        <tr>
+            <th style="min-width:12rem">
+                <div class="flex items-center">
+                    Title
+                    <p-columnFilter type="text" field="fullName" display="menu" />
+                </div>
+            </th>
+            <th style="min-width:27rem">
+                <div class="flex items-center">
+                    Contenet
+                    <p-columnFilter type="text" field="userName" display="menu" />
+                </div>
+            </th>
+            <th style="min-width:15rem">
+                <div class="flex items-center">
+                    Created At
+                    <p-columnFilter type="text" field="email" display="menu" />
+                </div>
+            </th>
+            <th style="min-width:15rem">
+                <div class="flex items-center">
+                    Created By
+                    <p-columnFilter type="text" field="phoneNumber" display="menu" />
+                </div>
+            </th>
+            
+            <th style="min-width:4rem">
+                Action
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-user>
+        <tr>
+            <td>
+                {{ user.title }}
+            </td>
+            <td>
+                {{ user.content }}
+            </td>
+            <td>
+                {{ user.createdAt | date: 'dd-MM-yyyy' }}
+            </td>
+            <td>
+                {{ user.createdBy }}
+            </td>
+           
+           <td class="text-right">
+        <p-menu
+          #menu
+          [model]="userMenuItems"
+          [popup]="true"
+          appendTo="body"
+          baseZIndex="1000"
+        ></p-menu>
+
+        <p-button
+          #menuButton
+          icon="pi pi-bars"
+          (click)="selectedNote = user; menu.toggle($event)"
+          [outlined]="true"
+          [style]="{ width: '2.5rem', height: '2.5rem' }"
+          class="p-button-text"
+          aria-label="Options"
+        />
+      </td>
+        </tr>
+    </ng-template>
+    <ng-template #emptymessage>
+        <tr>
+            <td colspan="7">No Notes found.</td>
+        </tr>
+    </ng-template>
+</p-table>

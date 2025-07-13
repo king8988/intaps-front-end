@@ -1,0 +1,78 @@
+<app-header
+  [breadCrumbList]="breadCrumbList"
+  [title]="pageTitle"
+  [description]="pageDescription"
+></app-header>
+<p-card>
+  <form [formGroup]="userRegForm" (ngSubmit)="submitForm()">
+    <div class="mb-10">
+      <div class="flex justify-between align-middle">
+        <p class="my-auto font-bold text-3xl">Create User Note</p>
+        <div class="flex">
+          <p-button
+            label="Clear"
+            [outlined]="true"
+            icon="pi pi-times"
+            iconPos="right"
+            (click)="clearForm()"
+          />
+          <p-button
+            [loading]="isSubmitted"
+            label="Save"
+            icon="pi pi-save"
+            iconPos="right"
+            class="pl-4"
+            styleClass="w-45"
+            type="submit"
+            [disabled]="userRegForm.invalid"
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="my-10">
+        <!-- Title: half width -->
+        <div class="px-5 w-1/2">
+          <p-floatlabel class="w-full">
+            <input
+              id="title"
+              pInputText
+              formControlName="title"
+              class="w-full"
+            />
+            <label for="title">Title *</label>
+          </p-floatlabel>
+          @if (userRegForm.get('title')?.invalid &&
+          (userRegForm.get('title')?.dirty)) { @if
+          (userRegForm.get('title')?.hasError('required')) {
+          <p-message severity="error" variant="simple" size="small"
+            >Title is required</p-message
+          >
+          } }
+        </div>
+        <!-- Content: full width -->
+        <div class="px-5 w-full mt-9">
+          <p-floatlabel>
+    <textarea
+      pTextarea
+      id="over_label"
+      formControlName="content"
+      rows="5"
+      cols="30"
+      style="resize: none"
+      class="h-full w-full border border-gray-300 p-2 rounded"
+    ></textarea>
+    <label for="over_label">Content Goes Here!</label>
+  </p-floatlabel>
+  @if (userRegForm.get('content')?.invalid &&
+  (userRegForm.get('content')?.dirty)) { @if
+  (userRegForm.get('content')?.hasError('required')) {
+    <p-message severity="error" variant="simple" size="small"
+      >Content is required</p-message
+    >
+  } }
+        </div>
+      </div>
+    </div>
+  </form>
+</p-card>

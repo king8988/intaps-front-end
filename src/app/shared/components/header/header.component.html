@@ -1,0 +1,29 @@
+<div class="flex flex-row sm:flex-row justify-between header">
+    <div class="flex flex-col pl-4 my-auto breadcrumb">
+        <p-breadcrumb class="max-w-full" [model]="items" [home]="home">
+            <ng-template #item let-item>
+                <a class="cursor-pointer" [routerLink]="item.url">
+                    <span>{{ item.title }}</span>
+                </a>
+            </ng-template>
+            <ng-template #separator> <span class="separator">/</span> </ng-template>
+        </p-breadcrumb>
+    </div>
+    <div class="flex flex-col my-auto align-middle">
+        <div class="flex flex-row sm:flex-row header my-auto align-middle">
+            <div class="flex flex-col px-5 my-auto align-middle">
+                <div class="block max-w-15 w-15 sm:w-15 h-11 bg-white text-black rounded-lg">
+<p-button (onClick)="logOut()" styleClass="w-full sm:w-full text-xl align-middle" icon="pi pi-power-off" />                </div>
+            </div>
+            <div class="flex flex-col pl-5 my-auto">
+                <div class="block max-w-15 w-15 sm:w-15 h-11 bg-white text-black rounded-lg">
+                    <p-button styleClass="w-full sm:w-full text-xl align-middle" icon="pi pi-user" />
+                </div>
+                </div> 
+        </div>    
+    </div>
+</div>
+<div class="flex flex-row sm:flex-col justify-center align-middle header-2 px-5 mb-3">
+    <p class="font-bold text-xl py-1">{{title}}</p>
+    <p class="text-gray-600 py-1">{{description}}</p>
+</div>
