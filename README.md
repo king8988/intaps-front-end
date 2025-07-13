@@ -13,4 +13,8 @@ This is the frontend application for the NMS project, built with Angular.
 
 ## Build
 
+<<<<<<< HEAD
 To build the project for production:
+=======
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+>>>>>>> b149712 (readme updated)
